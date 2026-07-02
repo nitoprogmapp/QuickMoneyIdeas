@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get free practical ideas to make extra money this week.">
+    <title>Quick Money Ideas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-zinc-950 text-white">
+    <main class="max-w-2xl mx-auto px-5 py-12 md:py-16 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+            Quick Money Ideas
+        </h1>
+
+        <p class="text-emerald-400 text-lg md:text-xl">
+            Fresh practical ideas to make extra money this week — Free
+        </p>
+
+        <div class="mt-10 md:mt-12 bg-zinc-900 border border-zinc-700 rounded-3xl p-6 md:p-10 shadow-2xl">
+            <button
+                id="generateButton"
+                onclick="generateIdea()"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98]
+                py-5 md:py-6 px-4 rounded-3xl font-bold text-xl md:text-2xl
+                transition-all duration-200"
+            >
+                Give Me a Fresh Idea
+            </button>
+
+            <div id="result" class="hidden mt-10">
+                <div
+                    id="category"
+                    class="inline-block bg-emerald-500/10 text-emerald-400
+                    border border-emerald-500/30 rounded-full px-4 py-2
+                    text-sm font-semibold mb-5"
+                ></div>
+
+                <h2 id="title" class="text-2xl md:text-3xl font-bold"></h2>
+
+                <p
+                    id="desc"
+                    class="mt-5 text-zinc-300 text-base md:text-lg leading-relaxed"
+                ></p>
+
+                <div class="mt-6 bg-zinc-950/60 border border-zinc-700 rounded-2xl p-5 text-left">
+                    <p class="text-sm text-zinc-400">Simple first step</p>
+                    <p id="firstStep" class="mt-2 text-white font-medium"></p>
+                </div>
+
+                <p id="counter" class="mt-5 text-sm text-zinc-500"></p>
+
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button
+                        onclick="generateIdea()"
+                        class="bg-zinc-800 hover:bg-zinc-700 active:scale-[0.98]
+                        py-4 rounded-3xl font-medium transition-all duration-200"
+                    >
+                        Another Idea
+                    </button>
+
+                    <button
+                        onclick="goToCapture()"
+                        class="bg-white hover:bg-zinc-200 text-black
+                        active:scale-[0.98] py-4 rounded-3xl font-bold
+                        transition-all duration-200"
+                    >
+                        Get More Ideas →
+                    </button>
+                </div>
+
+                <button
+                    onclick="shareOnX()"
+                    class="mt-5 w-full border border-zinc-700
+                    hover:bg-zinc-800 active:scale-[0.98]
+                    py-4 rounded-3xl font-medium
+                    transition-all duration-200"
+                >
+                    Share My Idea on X
+                </button>
+            </div>
+        </div>
+
+        <p class="mt-6 text-zinc-600 text-sm">
+            Free ideas. Real effort is required. Results will vary.
+        </p>
+    </main>
+
+    <script>
+        const capturePageUrl = "https://llpgpro.com/9vj8ytny/";
+        const toolShareUrl = "https://bit.ly/4v6pLjO";
+
+        const ideas = [
+            {
+                category: "Local Service",
+                title: "Cut Grass for Your Neighbors",
+                desc: "Offer a simple lawn-cutting service to people in your neighborhood. Start with a few nearby homes and charge a fair price based on the lawn size.",
+                firstStep: "Knock on five doors or post your service in a local Facebook group."
+            },
+            {
+                category: "Local Service",
+                title: "Trash Bin Cleaning Service",
+                desc: "Many homeowners dislike cleaning dirty outdoor garbage bins. Offer to wash, disinfect and deodorize them for a small fee.",
+                firstStep: "Create a simple offer such as: Two bins cleaned for $25."
+            },
+            {
+                category: "Local Service",
+                title: "Mobile Car Interior Cleaning",
+                desc: "Clean car interiors at the customer's home using a vacuum, microfiber cloths and basic cleaning products.",
+                firstStep: "Clean one friend's vehicle and take before-and-after photos."
+            },
+            {
+                category: "Local Service",
+                title: "Window Cleaning for Small Businesses",
+                desc: "Visit barbershops, restaurants and small stores that need their front windows cleaned regularly.",
+                firstStep: "Approach three local businesses with a simple weekly price."
+            },
+            {
+                category: "Pet Service",
+                title: "Dog Walking in Your Neighborhood",
+                desc: "Busy pet owners may pay for dependable dog walking during work hours, evenings or weekends.",
+                firstStep: "Create a short local post describing your availability and area."
+            },
+            {
+                category: "Local Service",
+                title: "Furniture Assembly Help",
+                desc: "Offer to assemble desks, beds, shelves and other boxed furniture for people who do not have the time or tools.",
+                firstStep: "Post your service on a local marketplace with a starting price."
+            },
+            {
+                category: "Seasonal Service",
+                title: "Snow Shoveling Route",
+                desc: "During winter, build a small route of houses that pay you to clear sidewalks, entrances and parking spaces.",
+                firstStep: "Ask neighbors to reserve your service before the next snowfall."
+            },
+            {
+                category: "Local Service",
+                title: "Home Organization Assistant",
+                desc: "Help people organize garages, closets, storage rooms or basements. You can charge by the hour or by the project.",
+                firstStep: "Offer one discounted organization session to create a testimonial."
+            },
+            {
+                category: "Reselling",
+                title: "Find and Resell Underpriced Items",
+                desc: "Search local marketplaces for furniture, electronics or tools being sold below their normal value, then clean and resell them.",
+                firstStep: "Choose one product category and compare at least ten listings."
+            },
+            {
+                category: "Digital Service",
+                title: "Create Digital Menus for Restaurants",
+                desc: "Help small restaurants replace outdated menus with attractive digital menus or QR-code menus.",
+                firstStep: "Create one sample menu in Canva and show it to a local restaurant."
+            },
+            {
+                category: "Digital Service",
+                title: "Google Business Profile Setup",
+                desc: "Help local businesses improve their Google Business Profile with accurate hours, photos, services and descriptions.",
+                firstStep: "Find a local business with an incomplete profile and prepare three improvements."
+            },
+            {
+                category: "Digital Service",
+                title: "Short Promotional Videos for Businesses",
+                desc: "Create simple vertical promotional videos for barbershops, restaurants, mechanics and other local businesses.",
+                firstStep: "Make one free sample using a business's existing photos."
+            },
+            {
+                category: "Digital Product",
+                title: "Sell a Small Practical Guide",
+                desc: "Create a short PDF solving one specific problem, such as saving money, cleaning faster or promoting a local business.",
+                firstStep: "Write down ten questions people repeatedly ask about a subject you understand."
+            },
+            {
+                category: "Online Service",
+                title: "Resume Improvement Service",
+                desc: "Help job seekers improve the formatting, wording and clarity of their resumes and cover letters.",
+                firstStep: "Create a before-and-after resume example without using private information."
+            },
+            {
+                category: "Online Service",
+                title: "Social Media Post Packages",
+                desc: "Create a weekly package of captions, graphics and short promotional posts for small business owners.",
+                firstStep: "Build a sample package containing three posts for one business category."
+            },
+            {
+                category: "Affiliate Marketing",
+                title: "Free Tool Plus Email Funnel",
+                desc: "Create a useful free tool that attracts visitors, gives immediate value and directs interested users to an email capture page.",
+                firstStep: "Choose one audience problem and create a simple tool that solves part of it."
+            },
+            {
+                category: "Digital Product",
+                title: "Sell Editable Canva Templates",
+                desc: "Design editable flyers, menus, appointment cards or social posts and sell them as reusable template packages.",
+                firstStep: "Create five templates for one type of local business."
+            },
+            {
+                category: "Online Service",
+                title: "Simple Website Setup for Local Businesses",
+                desc: "Build simple one-page websites containing business information, services, photos, location and contact buttons.",
+                firstStep: "Create one demonstration website for a fictional local business."
+            },
+            {
+                category: "Content Business",
+                title: "Create a Local Deals Newsletter",
+                desc: "Build a weekly email newsletter that shares discounts, events and special offers from businesses in your city.",
+                firstStep: "Collect ten local offers and create a sample first edition."
+            },
+            {
+                category: "Sophisticated Strategy",
+                title: "Build a Lead Generation Tool",
+                desc: "Create a free calculator, checklist or idea generator that businesses or consumers want to share, then connect it to an email funnel.",
+                firstStep: "Identify one simple question your target audience searches for repeatedly."
+            }
+        ];
+
+        let ideaOrder = [];
+        let currentPosition = 0;
+        let currentIdea = null;
+
+        function shuffleIdeas() {
+            ideaOrder = ideas.map((_, index) => index);
+
+            for (let i = ideaOrder.length - 1; i > 0; i--) {
+                const randomIndex = Math.floor(Math.random() * (i + 1));
+                [ideaOrder[i], ideaOrder[randomIndex]] =
+                    [ideaOrder[randomIndex], ideaOrder[i]];
+            }
+
+            currentPosition = 0;
+        }
+
+        function generateIdea() {
+            if (ideaOrder.length === 0 || currentPosition >= ideaOrder.length) {
+                shuffleIdeas();
+            }
+
+            const ideaIndex = ideaOrder[currentPosition];
+            currentIdea = ideas[ideaIndex];
+            currentPosition++;
+
+            document.getElementById("category").textContent = currentIdea.category;
+            document.getElementById("title").textContent = currentIdea.title;
+            document.getElementById("desc").textContent = currentIdea.desc;
+            document.getElementById("firstStep").textContent = currentIdea.firstStep;
+            document.getElementById("counter").textContent =
+                `Idea ${currentPosition} of ${ideas.length}`;
+
+            document.getElementById("result").classList.remove("hidden");
+            document.getElementById("generateButton").textContent =
+                "Give Me Another Fresh Idea";
+        }
+
+        function goToCapture() {
+            window.open(capturePageUrl, "_blank", "noopener,noreferrer");
+        }
+
+        function shareOnX() {
+            if (!currentIdea) {
+                generateIdea();
+            }
+
+            const shareText =
+                `My quick money idea: "${currentIdea.title}" 💡\n\n` +
+                `${currentIdea.desc}\n\n` +
+                `Get your own free idea here:\n${toolShareUrl}`;
+
+            const xUrl =
+                "https://twitter.com/intent/tweet?text=" +
+                encodeURIComponent(shareText);
+
+            window.open(xUrl, "_blank", "noopener,noreferrer");
+        }
+
+        shuffleIdeas();
+    </script>
+</body>
+</html>
